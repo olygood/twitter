@@ -14,19 +14,19 @@ const port = process.env.PORT || 3000;
 // les Folders------------------------------------------------------
 // défini le folder pour nos vues ...avec la key .set
 // il nous faut un require path
-app.set('views', path.join(__dirname, 'views'));
+//app.set('views', path.join(__dirname, 'views'));
 // on spécifie la view engine pour ne pas tapper l'extension à chaque fois que l'on utilise pug
 app.set('view engine','pug');
 
 // les Middlewares----------------------------------------------------
 // on utilise notre logger morgan il faut require!
-// app.use(morgan('short'));
+app.use(morgan('short'));
 // on appli nos principeaux middlewares...ici on récupère des statics
-// app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'public')));
 // 2 middlewares natif pour récupérer la data que l'on envoi POST
 app.use(bodyParser.json());
 // et urlencoded recupérer la data en body mais sur un autre format que json plus complexe
-// app.use(express.urlencoded({ extended : true }));
+app.use(express.urlencoded({ extended : true }));
 
 // les Routes---------------------------------------
 // point d'entrée de nos routes il fautr require l'index !
